@@ -8,26 +8,25 @@ export default function Home() {
         <button className="button_auth_home">Autentificarse</button>
       </header>
       <section className="main_home">
-        <img src="/public/icon.png" className="img_main_home" />
-
+        <img src="/public/portada.jpg" className="img_main_home" />
         <div className="text_main_home">
           <h3 className="services_title_home">Nuestros servicios</h3>
           <div className="services_home">
             <div className="item_home">
-              <img src="/public/icon.png" className="img_item_home" />
+              <img src="/public/corte.jpg" className="img_item_home" />
               <p>Corte</p>
             </div>
             <div className="item_home">
-              <img src="/public/icon.png" className="img_item_home" />
-              <p>Corte</p>
+              <img src="/public/lavado.jpg" className="img_item_home" />
+              <p>Lavado</p>
             </div>
             <div className="item_home">
-              <img src="/public/icon.png" className="img_item_home" />
-              <p>Corte</p>
+              <img src="/public/tinte.jpg" className="img_item_home" />
+              <p>Tinte</p>
             </div>
             <div className="item_home">
-              <img src="/public/icon.png" className="img_item_home" />
-              <p>Corte</p>
+              <img src="/public/peinado.jpg" className="img_item_home" />
+              <p>Peinado</p>
             </div>
           </div>
           <div className="horario_main_home">
