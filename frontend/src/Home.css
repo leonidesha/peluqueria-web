@@ -1,0 +1,135 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+}
+
+@media screen and (min-width: 600px) {
+  .footer_home {
+    font-size: 0.8rem;
+    padding: 0.5rem 0;
+  }
+}
+
+.header_home {
+  background-color: #333;
+  color: white;
+  text-align: left;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  height: 70px;
+  border-radius: 10px;
+  width: 100%;
+  position: fixed;
+}
+
+.imglogo_home {
+  width: 50px;
+  height: 50px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.button_auth_home {
+  background-color: #555;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: 20px;
+  height: fit-content;
+}
+
+.main_home {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 3fr 2fr;
+  background-color: #222;
+  color: white;
+  padding: 40px;
+  height: 100vh;
+  border-radius: 8px;
+  padding-top: 100px;
+}
+.services_home {
+  display: flex;
+  margin: 20px;
+  padding: 20px;
+  background-color: #444;
+  border-radius: 8px;
+  color: white;
+}
+
+.item_home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+  background-color: #555;
+  border-radius: 8px;
+  color: white;
+}
+.img_main_home {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  grid-row: 1;
+  grid-column: 1;
+}
+.img_item_home {
+  width: 50px;
+  height: 50px;
+}
+.horario_main_home {
+  display: flex;
+  align-items: center;
+  margin: 20px;
+  padding: 20px;
+  background-color: #444;
+  border-radius: 8px;
+  color: white;
+  flex-direction: row;
+}
+.button_reservar_home {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin: 20px;
+}
+.footer_home {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem 0;
+  margin-top: auto;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.contactanos_home {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.footer_home a {
+  color: #ffffff;
+  text-decoration: none;
+  margin: 0 1rem;
+  font-weight: bold;
+}
+.footer_home a:hover {
+  text-decoration: underline;
+  color: #00ffff;
+}
