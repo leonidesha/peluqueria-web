@@ -11,7 +11,7 @@ export default function Home() {
         <img src="/public/icon.png" className="img_main_home" />
 
         <div className="text_main_home">
-          <h3>Nuestros servicios</h3>
+          <h3 className="services_title_home">Nuestros servicios</h3>
           <div className="services_home">
             <div className="item_home">
               <img src="/public/icon.png" className="img_item_home" />
