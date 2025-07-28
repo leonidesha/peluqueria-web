@@ -4,6 +4,7 @@ import "./App.css";
 import PrivateRoute from "./components/PrivateRoute";
 import ManagePage from "./ManagePage";
 import Admin from "./pages/Admin";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/login" element={<Login />} />
           <Route
             path="/manage"
             element={
