@@ -5,6 +5,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import ManagePage from "./ManagePage";
 import Admin from "./pages/Admin";
 import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route
             path="/manage"
             element={
