@@ -29,49 +29,52 @@ const Login = () => {
     }
   };
 
-  // Configurar reCAPTCHA
-  const [loading, setloading] = useState(false);
+  const handlePhoneLogin = async () => {
+    // Configurar reCAPTCHA
+    const [loading, setloading] = useState(false);
 
-  auth.useDeviceLanguage(); // Configura el idioma del dispositivo para la autenticación
-  window.recaptchaVerifier = new RecaptchaVerifier(auth, "sing-in-button", {
-    size: "invisible",
-    callback: (response: any) => {
-      // Captcha resuelto, puedes proceder con la autenticación
-      console.log("Captcha resuelto:", response);
-      onSignInSubmit();
-    },
-    "expired-callback": () => {
-      // El captcha ha expirado, puedes manejarlo aquí
-      console.warn("Captcha expirado");
-    },
-  });
-  const phoneNumber = "+5358943924"; // Reemplaza con el número de teléfono del usuario
-  const sendCode = async () => {
-    setloading(true);
-    //StorageError("");
-    try {
-      const verifier = new RecaptchaVerifier(auth, "send-code-button", {
-        size: "invisible",
-        callback: (response: any) => {
-          // Captcha resuelto, puedes proceder con la autenticación
-          console.log("Captcha resuelto:", response);
-        },
-      });
-      const confirmationResult = await signInWithPhoneNumber(
-        auth,
-        phoneNumber,
-        verifier
-      );
-    } catch (error) {
-      console.error("Error al enviar el código:", error);
-    }
+    auth.useDeviceLanguage(); // Configura el idioma del dispositivo para la autenticación
+    window.recaptchaVerifier = new RecaptchaVerifier(auth, "sing-in-button", {
+      size: "invisible",
+      callback: (response: any) => {
+        // Captcha resuelto, puedes proceder con la autenticación
+        console.log("Captcha resuelto:", response);
+        onSignInSubmit();
+      },
+      "expired-callback": () => {
+        // El captcha ha expirado, puedes manejarlo aquí
+        console.warn("Captcha expirado");
+      },
+    });
+    const phoneNumber = "+5358943924"; // Reemplaza con el número de teléfono del usuario
+    const sendCode = async () => {
+      setloading(true);
+      //StorageError("");
+      try {
+        const verifier = new RecaptchaVerifier(auth, "send-code-button", {
+          size: "invisible",
+          callback: (response: any) => {
+            // Captcha resuelto, puedes proceder con la autenticación
+            console.log("Captcha resuelto:", response);
+          },
+        });
+        const confirmationResult = await signInWithPhoneNumber(
+          auth,
+          phoneNumber,
+          verifier
+        );
+      } catch (error) {
+        console.error("Error al enviar el código:", error);
+      }
+    };
   };
+
   function onSignInSubmit() {}
   //function signInWithPhoneNumber() {}
   return (
     <div>
       <button onClick={handleGoogleLogin}>Iniciar sesión con Google</button>
-      <button onClick={handleGoogleLogin}>Iniciar sesión con Telefono</button>
+      <button onClick={handlePhoneLogin}>Iniciar sesión con Telefono</button>
     </div>
   );
 };

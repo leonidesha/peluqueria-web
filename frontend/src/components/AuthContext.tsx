@@ -1,11 +1,5 @@
-import {
-  createContext,
-  useContext,
-  useState,
-  useMemo,
-  ReactNode,
-  useEffect,
-} from "react";
+import { createContext, useContext, useState, useMemo, useEffect } from "react";
+import type { ReactNode } from "react";
 
 type AuthContextType = {
   isAuth: boolean;
