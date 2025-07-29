@@ -1,11 +1,14 @@
 import "./Home.css";
+import { Link } from 'react-router-dom';
 export default function Home() {
   return (
     <>
       <header className="header_home">
         <img className="imglogo_home" src="/public/icon.png" />
         <h2>Peluquería Tal!</h2>
-        <button className="button_auth_home">Autentificarse</button>
+        <Link to="/login">
+          <button className="button_auth_home">Autentificarse</button>
+        </Link>
       </header>
       <section className="main_home">
         <img src="/public/icon.png" className="img_main_home" />
