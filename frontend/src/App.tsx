@@ -4,6 +4,7 @@ import "./App.css";
 import PrivateRoute from "./components/PrivateRoute";
 import ManagePage from "./ManagePage";
 import Admin from "./Admin";
+import Login from "../pages/Login";
 
 function App() {
   return (
