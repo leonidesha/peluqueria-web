@@ -1,5 +1,5 @@
 import "./Home.css";
-import { auth, db } from "../firebase";
+import { db } from "../firebase";
 import { useEffect, useState } from "react";
 import { collection, getDocs, query, where } from "firebase/firestore";
 
