@@ -81,7 +81,7 @@ const Login = () => {
 };
 
 export default Login;
-*/
+
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../firebase";
 import "./Login.css";
@@ -99,6 +99,94 @@ const Login = () => {
   };
 
   return <button onClick={handleGoogleLogin}>Iniciar sesión con Google</button>;
+};
+
+export default Login;
+*/
+import React, { useState } from 'react';
+import { auth } from '../firebase';
+import './Login.css';
+import { GoogleAuthProvider, signInWithPopup, RecaptchaVerifier } from 'firebase/auth';
+
+declare global {
+  interface Window {
+    confirmationResult?: any;
+    recaptchaVerifier?: any;
+  }
+}
+
+const Login = () => {
+  // Estado global del componente
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [code, setCode] = useState('');
+  const [mode, setMode] = useState<'login' | 'verify'>('login');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+
+  auth.useDeviceLanguage();
+
+  const handleGoogleLogin = async () => {
+    try {
+      const provider = new GoogleAuthProvider();
+      const result = await signInWithPopup(auth, provider);
+      console.log("Usuario:", result.user);
+      // Aquí redirigirías al dashboard
+    } catch (err) {
+      setError((err as Error).message);
+    }
+  };
+
+  const handlePhoneLogin = async () => {
+    // Configurar reCAPTCHA
+    window.recaptchaVerifier = new RecaptchaVerifier(
+      auth,
+      'sign-in-button',
+      {
+        size: 'invisible',
+        callback: (response: any) => {
+          console.log("reCAPTCHA resuelto:", response);
+          onSignInSubmit();
+        },
+        'expired-callback': () => {
+          console.warn("Captcha expirado");
+        },
+      }
+    );
+
+    const phoneNumber = "+5358943924"; // Reemplaza con el número de teléfono del usuario
+    const sendCode = async () => {
+      setLoading(true);
+      try {
+        const verifier = new RecaptchaVerifier(
+          auth,
+          'send-code-button',
+          {
+            size: 'invisible',
+            callback: (response: any) => {
+              console.log("reCAPTCHA resuelto:", response);
+            },
+          }
+        );
+        const confirmationResult = await signInWithPhoneNumber(auth, phoneNumber, verifier);
+        window.confirmationResult = confirmationResult;
+        setMode('verify');
+      } catch (error) {
+        setError('No se pudo enviar el código. Verifica el número.');
+      } finally {
+        setLoading(false);
+      }
+    };
+  };
+
+  function onSignInSubmit() {}
+
+  return (
+    <div>
+      <button onClick={handleGoogleLogin}>Iniciar sesión con Google</button>
+      <button onClick={handlePhoneLogin}>Iniciar sesión con Teléfono</button>
+    </div>
+  );
 };
 
 export default Login;
